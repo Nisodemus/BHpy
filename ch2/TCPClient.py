@@ -3,6 +3,7 @@
 #in timely fashion.... all for simplicity
 
 import socket
+import time
 
 #host currently set to the TCPServer included in folder
 target_host = "0.0.0.0"
@@ -14,7 +15,7 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #be a TCP client
 
 # connect the client
-client.connect((target_host,target_port))
+client.connect((target_host, target_port))
 
 while True:
     #send data to client
