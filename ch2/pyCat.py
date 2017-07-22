@@ -20,7 +20,7 @@ def usage():
         print ("")
         print ("Usage: pyCat.py -t target_host -p port")
         print ("-l --listen              - listen on [host]:[port] for incoming connections")
-        print ("-e --execute=file_to_run - executre the given file upon receiving a connection")
+        print ("-e --execute=file_to_run - execute the given file upon receiving a connection")
         print ("-c --command             - initialize a command shell")
         print ("-u --upload=destination  - upon receiving connection uploads a file and write to [destination]")
 
@@ -90,3 +90,4 @@ def main():
 main()
 
 #now plumbing for features we mentioned. Starting with client code
+#after food and much coffee....
