@@ -2,7 +2,7 @@ import socket
 
 port = 9999
 hostname = "0.0.0.0"
-text_to_send = "AAABBBCC TEST101"
+text_to_send = "AAABBBCCTEST101"
 
 def netkitten(text_to_send):
 
