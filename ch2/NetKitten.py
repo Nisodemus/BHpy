@@ -156,3 +156,33 @@ def client_handler(client_socket):
             client_socket.send("Many Success - File Written to: {0}\r\n".format(uploadDestination).encode())
         except:
             client_socket.send("Aww Shit - Failed to save at {0}. Does this dir even exist?\r\n".format(uploadDestination).encode())
+
+    if execute is not None:
+        print("Kitten: Racking command")
+        #fire command
+        output = run_command(execute)
+        client_socket.send(output.encode())
+
+    #if shell was requested fall into loop
+    if command:
+        print("Kitten: pls can i have shell")
+        #prompt
+        client_socket.send("<BHP:#>".encode())
+
+        while True:
+
+            #recieve until linefeed
+            cmd_buff = ""
+            while "\n" not in cmd_buff:
+                cmd_buff += client_socket.recv(1024).decode()
+
+            #send back to command output
+            response = run_command(cmd_buff)
+
+            if isinstance(response, str):
+                response = response.encode()
+
+            #send back response
+            client_socket.send(response + "<BHP:#>".encode())
+
+main()
