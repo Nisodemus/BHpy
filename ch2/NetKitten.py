@@ -124,4 +124,35 @@ def run_command(command):
     #shoot data back to client
     return output
 
-#client handler + shell loop + shit tons of fixs needed. 
+#client handler stuff
+
+def client_handler(client_socket):
+    global execute
+    global command
+    global upload
+
+    print("Kitten: Handling client sockets")
+
+    #check for uploads
+    if uploadDestination is not None:
+        print("kitten: Trying file upload")
+        #read and write bytes to destination
+        file_buff = ""
+
+        #keep reading data untill none remains
+        while True:
+            data = client_socket.recv(1024)
+            if not data:
+                break
+            else: file_buff += data.decode()
+
+        #wreite bytes to file
+        try:
+            cock = open(uploadDestination, "wb")
+            cock.write(file_buff)
+            cock.close()
+
+            #ACK file writing
+            client_socket.send("Many Success - File Written to: {0}\r\n".format(uploadDestination).encode())
+        except:
+            client_socket.send("Aww Shit - Failed to save at {0}. Does this dir even exist?\r\n".format(uploadDestination).encode())
