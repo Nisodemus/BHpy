@@ -76,7 +76,7 @@ def client_sender(buff):
             response = ""
 
             while recv_len:
-                print("Kitten: waiting for response form client")
+                print("Kitten: waiting for daddies cummies")
                 data = client.recv(4096)
                 recv_len = len(data)
                 response += data.decode(errors="ignore")
